@@ -1,0 +1,164 @@
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+
+/* Containers */
+
+.container {
+margin-left: auto;
+margin-right: auto;
+}
+
+a{text-decoration: none;
+color: #006dcf;}
+
+body {
+background: #fff;
+font-family: 'Oswald', sans-serif;
+	}
+
+/* Box */
+
+.menu{
+padding: 20px;
+width: 400px;
+border-style: solid;
+border-width: 1px;
+border-color: #006dcf;;
+}
+
+.fieldMenu{
+ align: center;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ margin-bottom: 2px;
+ padding: 20px;
+	}
+
+
+
+/* Head */
+
+#heading {
+background-color: #006dcf;
+color: #ffffff;
+padding: 200px;
+text-align: center;
+font-size:25px;
+color: white;
+text-shadow: 2px 2px 4px #000000;
+}
+
+#heading2 {
+background-color: #006dcf;
+color: #ffffff;
+padding: 20px;
+font-size:25px;
+text-align: center;
+}
+
+#main{
+width: 100%;
+height: 450px;
+}
+
+.left1{
+float:left;
+padding: 20px;
+width: 350px;
+height: 400px;
+        	}
+.left2{
+float:left;
+padding: 10px;
+width: 600px;
+height: 400px;
+margin-left: 100px;
+margin-top: 50px;
+}
+
+.right{
+padding: 20px;
+width: 250px;
+height: 400px;
+float:right;
+margin-right: 50px;
+}
+
+i{text-shadow: 1px 1px 1px #0aa000}
+
+
+/*  Diary table */
+.diaryFieldset{
+padding: 20px;
+width: 400px;
+}
+
+table {
+border-collapse: collapse;
+width: 500px;
+}
+
+table, th, td {
+padding: 10px;
+border: 1px solid black;
+}
+
+/*  Diary form */
+
+
+.formField{
+font-size:13px;
+}
+
+.addform{
+width: 400px;
+margin-right: 50px;
+}
+
+.padding{
+padding:10px;
+}
+     /*  List of activities*/
+.activity{
+text-align: center;
+}
+
+
+        /*  Weather*/
+.rightWeather{
+padding: 10px;
+width: 350px;
+height: 400px;
+float:right;
+margin-right: 10px;
+}
+.temp
+{
+margin-top: 0px;
+}
+.weather{
+float: left;
+}
+
+.weather2{
+float: left;
+margin-top: 90px;
+margin-right: 4px;
+}
+
+.weatherMain{
+margin-left: 50px;
+float:left;
+width: 750px;
+height: 400px;
+             	}
+.weatherParams{
+float:left;
+margin-top: 50px;
+margin-left: 20px;
+font-size: 20px;
+padding: 10px;
+}
+.weatherCity{
+float:left;
+}

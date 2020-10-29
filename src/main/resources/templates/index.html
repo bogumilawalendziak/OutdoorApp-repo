@@ -1,0 +1,117 @@
+<!DOCTYPE html >
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="vievport" content ="width=device-width, initial-scale=1.0">
+    <title>Outdoor App</title>
+    <link th:href="@{\class.css}" rel="stylesheet" />
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+</style>
+    <link th:href="@{\fontawesome-free-5.15.1-web\css\all.css}" rel="stylesheet">
+
+</head>
+<body>
+
+
+<section id="heading">
+    <h2><strong>Outdoor App</strong> </h2>
+    <p>Spędzaj czas na zewnątrz.</p>
+</section>
+
+<section><header>
+    <h2>Outdoor App</h2>
+</header>
+    <div class="fieldMenu">
+        <div class="menu">
+            <a href="AddActivity">	<i class="fas fa-running fa-3x"></i>
+                <h3>Moja aktywność</h3>
+                Sprawdź jakie aktywności są dostępne dzisiaj i dodaj aktywność do dziennika.
+            </a>
+        </div>
+
+        <div class="menu">
+            <a href="MyAchievements">
+                <i class="fas fa-clipboard fa-3x"></i>
+                <h3>Dziennik aktywności</h3>
+                Przeglądaj swoje osiąnięcia.</a>
+        </div>
+        <div class="menu">
+            <a href="Notification">
+                <i class="far fa-bell fa-3x"></i>
+                <h3>Powiadomienie</h3>
+                Ustaw powiadomienie,gdy pogoda pozwoli na wykonywanie twojej aktywności.</a>
+        </div>
+        <div class="menu">
+            <a href="http://google.com">
+                <i class="fa fa-save fa-3x"></i>
+                <h3>Aktywności Outdoorowe</h3>
+                Przejżyj listę wszystkich proponowanych aktywności outdoorowych.</a>
+        </div>
+        <div class="menu"><a href="Weather">
+            <i class="fas fa-cloud-sun fa-3x"></i>
+            <h3>Pogoda</h3>
+            Sprawdź szczegółową pogodę.</a>
+        </div>
+        <div class="menu"><a href="Contact">
+            <i class="far fa-paper-plane fa-3x"></i>
+            <h3>Kontakt</h3>
+            Podziel się z nami opinią lub zgłoś zauważone błędy.</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+</footer>
+
+<script>
+			$(".feature").click(function() {
+  window.location = $(this).find("a").attr("href");
+  return false;
+});
+
+
+    const div0= document.getElementById('weatherTemp');
+    const URLM = "http://localhost:8080";
+
+
+      const mainTemp =`${URLM}/mainTemp`;
+    fetch(`${mainTemp}`).then(response => response.text()).then((text)=>{
+    div0.innerHTML=`<h2> ${text} °C</h2>`;});
+
+    const div2 = document.getElementById('waterTemp');
+    const waterTemp =`${URLM}/waterTemp`;
+    fetch(`${waterTemp}`).then(response => response.text()).then((text)=>{
+    div2.innerHTML=`temperatura wody w Bałtyku: ${text}°C`;});
+
+    const div3 = document.getElementById('swell');
+    const swell =`${URLM}/swell`;
+    fetch(`${swell}`).then(response => response.text()).then((text)=>{
+    document.getElementById('swell').innerHTML=`Poziom fal: ${text}m`;});
+
+    const div4 = document.getElementById('windspeed');
+    const windspeed =`${URLM}/windSpeed`;
+    fetch(`${windspeed}`).then(response => response.text()).then((text)=>{
+    div4.innerHTML=`Prędkość wiatru: ${text}m/s`;});
+
+    fetch(`${URLM}/activitiesNow`).then(response=>response.json())
+        .then( lista => {
+          document.getElementById('activity').innerHTML = lista.map(Activity => `
+               <div><h4>${Activity.activityName}</h4></div>
+          `).join('\n'); });
+
+    fetch(`${URLM}/readAllActivities`).then(response=>response.json())
+        .then( lista => {document.getElementById('select').innerHTML = lista.map(Activity => `
+               <option>${Activity.activityName}</option>
+          `).join('\n');
+        });
+
+    const icon1=`${URLM}/actualIcon`;
+    fetch(`${icon1}`).then(response => response.text()).then((text)=>{
+    document.getElementById('icon').innerHTML=`<img src="http://openweathermap.org/img/wn/${text}@2x.png"/>`;});
+
+
+
+		</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="vievport" content ="width=device-width, initial-scale=1.0">
+	<title>Outdoor App</title>
+	<link th:href="@{\class.css}" rel="stylesheet" />
+	<link th:href="@{\fontawesome-free-5.15.1-web\css\all.css}" rel="stylesheet">
+	<style>
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+</style>
+</head>
+<body>
+
+<section id="heading2">
+	<h3>Dodaj aktywność</h3>
+</section>
+
+<section>
+	<div id="main">
+		<div id="1" class="left1">
+			<div class="weather">
+				<form action="Wybierz miasto">
+					<select name="nazwa">
+						<option>Gdańsk</option>
+						<option>Jelenia Góra</option>
+					</select>
+				</form>
+				<h3>Aktualna pogoda</h3>
+				<div id="icon" ></div>
+				<div id="day"></div>
+				<div id="date"></div>
+			</div>
+
+			<div class="weather2">
+			<div id="weatherTemp" ></div>
+			<div id="humidity" style="text-align: left"></div>
+			<div id="pressure" style="text-align: left"></div>
+			<div id="windspeed" style="text-align: left"></div>
+			</div>
+		</div>
+		<div id="2" class="left2">
+			<fieldset class="addform">
+				<h3>Dodaj nową aktywność</h3>
+				<h2 th:if="${message}!=null" th:text="${message}"></h2>
+				<form action="#" method="post" th:action="@{/AddActivity}"  th:object="${myActivity}">
+					<div><p th:if="${#fields.hasErrors('all')}" th:errors="*{all}" >Incorrect date</p></div>
+					<div>Wybierz aktywność:</div>
+					<div><select class="formField" name="select" id="select" th:field="*{activityName}"></select></div>
+					<div>Podaj swoje imię:</div>
+					<div><input class="formField" type="text" name="user" placeholder="Enter your name" th:field="*{user}"/></div>
+					<div>Wybierz datę aktywności:</div>
+					<div><input  size="20" class="formField" type="date" name="data" th:field="*{data}"/></div>
+					<div>Dodaj opis aktywności:</div>
+					<div><textarea id="w3review" name="w3review" rows="5" cols="50" th:field="*{description}"/></div>
+					<div><button class="formField" type="submit" name="submit" >Dodaj</button></div>
+				</form></fieldset>
+			</div>
+		<div id="3" class="right">
+		<div id="activity"></div>
+	</div>
+	</div>
+</section>
+
+<section><header>
+	<h2>Outdoor App</h2>
+</header>
+	<div class="fieldMenu">
+		<div class="menu">
+			<a href="AddActivity">	<i class="fas fa-running fa-3x"></i>
+				<h3>Moja aktywność</h3>
+				Sprawdź jakie aktywności są dostępne dzisiaj i dodaj aktywność do dziennika.
+			</a>
+		</div>
+
+		<div class="menu">
+			<a href="MyAchievements">
+				<i class="fas fa-clipboard fa-3x"></i>
+				<h3>Dziennik aktywności</h3>
+				Przeglądaj swoje osiąnięcia.</a>
+		</div>
+		<div class="menu">
+			<a href="Notification">
+				<i class="far fa-bell fa-3x"></i>
+				<h3>Powiadomienie</h3>
+				Ustaw powiadomienie,gdy pogoda pozwoli na wykonywanie twojej aktywności.</a>
+		</div>
+		<div class="menu">
+			<a href="http://google.com">
+				<i class="fa fa-save fa-3x"></i>
+				<h3>Aktywności Outdoorowe</h3>
+				Przejżyj listę wszystkich proponowanych aktywności outdoorowych.</a>
+		</div>
+		<div class="menu"><a href="Weather">
+			<i class="fas fa-cloud-sun fa-3x"></i>
+			<h3>Pogoda</h3>
+			Sprawdź szczegółową pogodę.</a>
+		</div>
+		<div class="menu"><a href="Contact">
+			<i class="far fa-paper-plane fa-3x"></i>
+			<h3>Kontakt</h3>
+			Podziel się z nami opinią lub zgłoś zauważone błędy.</a>
+		</div>
+	</div>
+</section>
+<footer>
+</footer>
+<script src="/weather.js"></script>
+</body>
+</html>

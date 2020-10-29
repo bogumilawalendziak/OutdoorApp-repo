@@ -1,0 +1,245 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="vievport" content ="width=device-width, initial-scale=1.0">
+	<title>Outdoor App</title>
+	<link th:href="@{\class.css}" rel="stylesheet" />
+	<link th:href="@{\fontawesome-free-5.15.1-web\css\all.css}" rel="stylesheet">
+	<style>
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+</style>
+</head>
+<body>
+
+<section id="heading2">
+	<h3>Aktualna pogoda</h3>
+</section>
+
+<section>
+	<div id="main">
+		<div id="1" class="weatherMain">
+			<form action="Wybierz miasto">
+				<select name="nazwa">
+					<option>Gdańsk</option>
+					<option>Jelenia Góra</option>
+				</select>
+			</form>
+			<div class="weatherCity">
+			<h3> Aktualna pogoda </h3>
+			<div id="icon" class="weather"></div>
+				<div id="day"></div>
+				<div id="date"></div>
+			</div>
+
+			<div class = "weatherParams">
+			<div id="mainTemp" style="text-align: left">Temperatura powietrza</div>
+			<div id="swell" style="text-align: left">Swell</div>
+			<div id="windspeed" style="text-align: left">Wind speed</div>
+			<div id="rain" style="text-align: left">Rain</div>
+			<div id="humidity" style="text-align: left">Rain</div>
+
+			</div>
+			<div class = "weatherParams">
+				<div id="waterTemp" style="text-align: left">Water temp</div>
+				<div id="sunrise" style="text-align: left">Swell</div>
+				<div id="sunset" style="text-align: left">Wind speed</div>
+				<div id="windDeg" style="text-align: left">Wind Deg</div>
+				<div id="pressure" style="text-align: left">Pressure</div>
+
+			</div>
+
+		</div>
+
+		<div id="3" class="rightWeather"><fieldset><h3>Proponowane aktyności na obecną pogodę:</h3>
+		<div id="activity" class="activity"></div>
+		</fieldset>
+	</div>
+	</div>
+</section>
+
+<section><header>
+	<h2>Outdoor App</h2>
+</header>
+	<div class="fieldMenu">
+		<div class="menu">
+			<a href="AddActivity">	<i class="fas fa-running fa-3x"></i>
+				<h3>Moja aktywność</h3>
+				Sprawdź jakie aktywności są dostępne dzisiaj i dodaj aktywność do dziennika.
+			</a>
+		</div>
+		<div class="menu">
+			<a href="MyAchievements">
+				<i class="fas fa-clipboard fa-3x"></i>
+				<h3>Dziennik aktywności</h3>
+				Przeglądaj swoje osiąnięcia.</a>
+		</div>
+		<div class="menu">
+			<a href="Notification">
+				<i class="far fa-bell fa-3x"></i>
+				<h3>Powiadomienie</h3>
+				Ustaw powiadomienie,gdy pogoda pozwoli na wykonywanie twojej aktywności.</a>
+		</div>
+		<div class="menu">
+			<a href="http://google.com">
+				<i class="fa fa-save fa-3x"></i>
+				<h3>Aktywności Outdoorowe</h3>
+				Przejżyj listę wszystkich proponowanych aktywności outdoorowych.</a>
+		</div>
+		<div class="menu"><a href="Weather">
+			<i class="fas fa-cloud-sun fa-3x"></i>
+			<h3>Pogoda</h3>
+			Sprawdź szczegółową pogodę.</a>
+		</div>
+		<div class="menu"><a href="Contact">
+			<i class="far fa-paper-plane fa-3x"></i>
+			<h3>Kontakt</h3>
+			Podziel się z nami opinią lub zgłoś zauważone błędy.</a>
+		</div>
+	</div>
+</section>
+<footer>
+</footer>
+
+<script>
+fetch("http://localhost:8080/mainWeather")
+  .then(response => response.json())
+  .then(data =>  document.getElementById('icon').innerHTML=`<img src="http://openweathermap.org/img/wn/${data.icon}@2x.png" />`);
+
+
+ fetch("http://localhost:8080/mainWeather")
+  .then(response => response.json())
+  .then(data =>  document.getElementById('rain').innerHTML=`Deszcz: <b>${data.rain}mm</b>`);
+
+ fetch("http://localhost:8080/mainWeather")
+  .then(response => response.json())
+  .then(data =>  document.getElementById('mainTemp').innerHTML=`Temperatura powietrza: <b>${data.mainTemp} celcjusza</b>`);
+
+ fetch("http://localhost:8080/mainWeather")
+  .then(response => response.json())
+  .then(data =>  document.getElementById('windspeed').innerHTML=`Prędkość wiatru: <b>${data.windSpeed}mm</b>`)
+
+
+ fetch("http://localhost:8080/mainWeather")
+  .then(response => response.json())
+  .then(data =>  document.getElementById('swell').innerHTML=`Poziom fal: <b>${data.swell}m</b>`);
+
+
+ fetch("http://localhost:8080/mainWeather").then(response => response.json())
+  .then(data =>  document.getElementById('waterTemp').innerHTML=`temperatura wody w Bałtyku: <b>${data.waterTemp} °C</b>`);
+
+
+ fetch("http://localhost:8080/Open")
+  .then(response => response.json())
+  .then(data => document.getElementById('sunrise').innerHTML=`Wschód słońca: <b>${myFunction(data.sys.sunrise)}</b>`);
+
+ fetch("http://localhost:8080/Open")
+  .then(response => response.json())
+  .then(data => document.getElementById('sunset').innerHTML=`Zachód słońca: <b>${myFunction(data.sys.sunset)}</b>`);
+
+ fetch("http://localhost:8080/Open").then(response => response.json())
+  .then(data =>  document.getElementById('windDeg').innerHTML=`Kierunek wiatru: <b>${degWindConversion(data.wind.deg)}</b>`);
+
+ fetch("http://localhost:8080/Open").then(response => response.json())
+  .then(data =>  document.getElementById('pressure').innerHTML=`Ciśnienie: <b>${data.main.pressure}hPa</b>`);
+
+fetch("http://localhost:8080/Open").then(response => response.json())
+  .then(data =>  document.getElementById('humidity').innerHTML=`Wilgotność powietrza: <b>${data.main.humidity}%</b>`);
+
+
+function myFunction(a) {
+var date = new Date(a * 1000);
+var timestr = date.toLocaleTimeString();
+  return timestr;
+}
+
+
+function degWindConversion(deg){
+  if (deg>11.25 && deg<33.75){
+    return "NNE";
+  }else if (deg>33.75 && deg<56.25){
+    return "ENE";
+  }else if (deg>56.25 && deg<78.75){
+    return "E";
+  }else if (deg>78.75 && deg<101.25){
+    return "ESE";
+  }else if (deg>101.25 && deg<123.75){
+    return "ESE";
+  }else if (deg>123.75 && deg<146.25){
+    return "SE";
+  }else if (deg>146.25 && deg<168.75){
+    return "SSE";
+  }else if (deg>168.75 && deg<191.25){
+    return "S";
+  }else if (deg>191.25 && deg<213.75){
+    return "SSW";
+  }else if (deg>213.75 && deg<236.25){
+    return "SW";
+  }else if (deg>236.25 && deg<258.75){
+    return "WSW";
+  }else if (deg>258.75 && deg<281.25){
+    return "W";
+  }else if (deg>281.25 && deg<303.75){
+    return "WNW";
+  }else if (deg>303.75 && deg<326.25){
+    return "NW";
+  }else if (deg>326.25 && deg<348.75){
+    return "NNW";
+  }else{
+    return "N";
+  }
+}
+
+fetch("http://localhost:8080/activitiesNow").then(response=>response.json())
+        .then( list => {
+          document.getElementById('activity').innerHTML = list.map(Activity => `
+              <p> ${Activity.activityName}</p>
+          `).join('\n'); });
+
+document.getElementById('day').innerHTML=` <b>${dayFunction()}</b>`;
+
+document.getElementById('date').innerHTML=` <b>${dateFunction()}</b>`;
+
+function dateFunction(){
+date = new Date();
+year = date.getFullYear();
+month = date.getMonth() + 1;
+day = date.getDate();
+
+ switch(month){
+    case 1: month = "Styczeń"; break;
+    case 2: month = "Luty"; break;
+    case 3: month = "Marzec"; break;
+    case 4: month = "Kwiecień"; break;
+    case 5: month = "Maj"; break;
+    case 6: month = "Czerwiec"; break;
+    case 7: month = "Lipiec"; break;
+    case 8: month = "Sierpień"; break;
+    case 9: month = "Wrzesień"; break;
+    case 10: month = "Październik"; break;
+    case 11: month = "Listopad"; break;
+    case 12: month = "Grudzień"; break;
+  }
+
+var text =day + " "+month+" " + year;
+return text;
+
+}
+
+function dayFunction() {
+date = new Date();
+var dzienTygodnia = date.getDay();
+  switch(dzienTygodnia){
+    case 0: dzienTygodnia = "niedziela"; break;
+    case 1: dzienTygodnia = "poniedziałek"; break;
+    case 2: dzienTygodnia = "wtorek"; break;
+    case 3: dzienTygodnia = "środa"; break;
+    case 4: dzienTygodnia = "czwartek"; break;
+    case 5: dzienTygodnia = "piątek"; break;
+    case 6: dzienTygodnia = "sobota"; break;
+  }
+  return dzienTygodnia;
+  }
+		</script>
+</body>
+</html>
