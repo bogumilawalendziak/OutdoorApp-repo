@@ -47,14 +47,16 @@
 					<div >Wybierz aktywność:</div>
 					<div><select class="formField" name="select" id="select" th:field="*{activityName}"></select></div>
 					<div >Podaj swoje imię:</div>
-					<div><input class="formField" type="text" name="user" placeholder="Enter your name" th:field="*{user}"/></div>
+					<div><input class="formField" type="text" name="user"  th:field="*{user}"/></div>
 					<div >Podaj adres e-mail:</div>
 					<div><input id="email" name="email" size="25" th:field="*{email}"/></div>
 					<div><button class="formField" type="submit" name="submit" >Wyślij</button></div>
 				</form></fieldset>
 			</div>
 		<div id="3" class="right">
-		<div id="activity"></div>
+			<fieldset >
+			<p> Niektóre sporty można uprawiać tylko przy śćliśle określonych warunkach pogodowych. Nie muisz jednak sprawdzać pogody codziennie - wyślemy powadomienie, gdy warunki pogodowe będą odpowiednie dla wybranej przez Ciebie dyscypliny. Wystarczy, ze wypełnisz formularz :)</p>
+			</fieldset>
 	</div></div>
 	</div>
 </section>

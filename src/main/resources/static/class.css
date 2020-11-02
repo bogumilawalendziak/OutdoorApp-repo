@@ -78,10 +78,10 @@ margin-top: 50px;
 
 .right{
 padding: 20px;
-width: 250px;
+width: 300px;
 height: 400px;
-float:right;
-margin-right: 50px;
+float:left;
+margin-top: 50px;
 }
 
 i{text-shadow: 1px 1px 1px #0aa000}
@@ -127,7 +127,7 @@ text-align: center;
         /*  Weather*/
 .rightWeather{
 padding: 10px;
-width: 350px;
+width: 250px;
 height: 400px;
 float:right;
 margin-right: 10px;

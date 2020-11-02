@@ -48,7 +48,7 @@
 					<div>Wybierz aktywność:</div>
 					<div><select class="formField" name="select" id="select" th:field="*{activityName}"></select></div>
 					<div>Podaj swoje imię:</div>
-					<div><input class="formField" type="text" name="user" placeholder="Enter your name" th:field="*{user}"/></div>
+					<div><input class="formField" type="text" name="user" th:field="*{user}"/></div>
 					<div>Wybierz datę aktywności:</div>
 					<div><input  size="20" class="formField" type="date" name="data" th:field="*{data}"/></div>
 					<div>Dodaj opis aktywności:</div>
@@ -57,7 +57,8 @@
 				</form></fieldset>
 			</div>
 		<div id="3" class="right">
-		<div id="activity"></div>
+			<fieldset >
+				<p> Tutaj możesz dodać informacje o twojej aktywności. W pierwszym kroku należy wybrać aktywność z rozwijanej listy, następnie podać swoje imię, wybrać datę - kiedy aktywnść miała miejsce i dodać opis. Warto zapisać takie informacje jak długość przebytej trasy, miejsce czy czas trwania treningu. Zapisane informacje pojawią się w dzienniku aktywności.  </p></fieldset>
 	</div>
 	</div>
 </section>
