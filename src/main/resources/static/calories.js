@@ -12,11 +12,9 @@ fetch("http://localhost:8080/Open").then(response => response.json())
   .then(data =>  document.getElementById('humidity').innerHTML=`Wilgotność powietrza: <b>${data.main.humidity}%</b>`);
 
 
-fetch("http://localhost:8080/readAllActivities").then(response=>response.json())
-        .then( lista => {document.getElementById('select').innerHTML = lista.map(Activity => `
-               <option>${Activity.activityName}</option>
-          `).join('\n');
-        });
+
+
+
 
 fetch("http://localhost:8080/mainWeather")
   .then(response => response.json())

@@ -1,5 +1,7 @@
 package Spring.OutdoorApp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -33,6 +35,10 @@ public class Activity  {
     @Column(name = "watermax")
     double waterMax;
 
+    @OneToOne (mappedBy="activity")
+    @JsonBackReference
+    private Calories calories;
+
 
     public Activity(int id, String activity_name, double windSpeedmin, double windSpeedMax, double windDegMin, double windDegMax, double rain, double swellMin, double swellMax, double minTemp, double maxTemp, double waterMin, double waterMax) {
         this.id=id;
@@ -54,6 +60,15 @@ public class Activity  {
 
     }
 
+
+    public Calories getCalories() {
+        return calories;
+    }
+
+    public void setCalories(Calories calories) {
+        this.calories = calories;
+    }
+
     public int getId() {
         return id;
     }
@@ -66,8 +81,8 @@ public class Activity  {
         return activity_name;
     }
 
-    public void setActivityName(String activityName) {
-        this.activity_name = activityName;
+    public void setActivityName(String activity_name) {
+        this.activity_name = activity_name;
     }
 
     public double getWindSpeedmin() {

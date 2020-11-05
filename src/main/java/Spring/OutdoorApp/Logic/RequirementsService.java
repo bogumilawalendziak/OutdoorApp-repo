@@ -3,12 +3,13 @@ package Spring.OutdoorApp.Logic;
 import Spring.OutdoorApp.model.Activity;
 import Spring.OutdoorApp.model.ActivityRepository;
 
+import Spring.OutdoorApp.model.Calories;
+import Spring.OutdoorApp.model.CaloriesRepository;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class RequirementsService {
-
 
 
     public static void ActivityHardcode(ActivityRepository activityRepository){
@@ -32,5 +33,28 @@ public class RequirementsService {
         activityRepository.save(Walking);
         activityRepository.save(Rollerblading);
         activityRepository.save(Biking);
+    }
+
+    public static void CaloriesHardcode(CaloriesRepository caloriesRepository,ActivityRepository activityRepository){
+        Calories Surfing = new Calories(1,activityRepository.findByName("Surfing"),400);
+        Calories Climbing = new Calories(2,activityRepository.findByName("Wspinaczka"), 756);
+        Calories Running = new Calories(3,activityRepository.findByName("Bieganie"),1000);
+        Calories Swimming = new Calories(4,activityRepository.findByName("Pływanie"),400);
+        Calories Skiing = new Calories(5,activityRepository.findByName("Jazda na nartach"),511);
+        Calories Hikking = new Calories(6,activityRepository.findByName("Chodzenie po górach"),400);
+        Calories Walking = new Calories(7,activityRepository.findByName("Spacer"),200);
+        Calories Rollerblading = new Calories(8,activityRepository.findByName("Jazda na rolkach"),400);
+        Calories Biking = new Calories(9,activityRepository.findByName("Jazda na rowerze"),500);
+
+        caloriesRepository.save(Surfing);
+        caloriesRepository.save(Climbing);
+        caloriesRepository.save(Running);
+        caloriesRepository.save(Swimming);
+        caloriesRepository.save(Skiing);
+        caloriesRepository.save(Hikking);
+        caloriesRepository.save(Walking);
+        caloriesRepository.save(Rollerblading);
+        caloriesRepository.save(Biking);
+
     }
 }

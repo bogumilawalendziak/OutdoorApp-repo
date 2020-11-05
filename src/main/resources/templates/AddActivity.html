@@ -40,6 +40,25 @@
 			</div>
 		</div>
 		<div id="2" class="left2">
+
+			<div class="diaryFieldset" ><h2>Dziennik Aktywności</h2>
+
+					<p> Tutaj możesz dodać informacje o twojej aktywności. Należy wybrać aktywność z rozwijanej listy, następnie podać swoje imię, wybrać datę - kiedy aktywnść miała miejsce i dodać opis - długość przebytej trasy, miejsce czy czas trwania treningu. Zapisane informacje pojawią się w dzienniku aktywności.  </p>
+
+				<table >
+					<tr><td>Użytkownik</td>
+						<td>Aktywność</td>
+						<td>Opis</td>
+						<td>Data</td>
+					</tr>
+					<tr th:each="myActivity: ${activities}"><td th:text="${myActivity.user}"></td>
+						<td th:text="${myActivity.activityName}"></td>
+						<td th:text="${myActivity.description}"></td>
+						<td th:text="${myActivity.data}"></td>
+					</tr></table>
+			</div>
+			</div>
+		<div id="3" class="right">
 			<fieldset class="addform">
 				<h3>Dodaj nową aktywność</h3>
 				<h2 th:if="${message}!=null" th:text="${message}"></h2>
@@ -52,14 +71,10 @@
 					<div>Wybierz datę aktywności:</div>
 					<div><input  size="20" class="formField" type="date" name="data" th:field="*{data}"/></div>
 					<div>Dodaj opis aktywności:</div>
-					<div><textarea id="w3review" name="w3review" rows="5" cols="50" th:field="*{description}"/></div>
+					<div><textarea id="w3review" name="w3review" rows="3" cols="30" th:field="*{description}"/></div>
 					<div><button class="formField" type="submit" name="submit" >Dodaj</button></div>
 				</form></fieldset>
 			</div>
-		<div id="3" class="right">
-			<fieldset >
-				<p> Tutaj możesz dodać informacje o twojej aktywności. W pierwszym kroku należy wybrać aktywność z rozwijanej listy, następnie podać swoje imię, wybrać datę - kiedy aktywnść miała miejsce i dodać opis. Warto zapisać takie informacje jak długość przebytej trasy, miejsce czy czas trwania treningu. Zapisane informacje pojawią się w dzienniku aktywności.  </p></fieldset>
-	</div>
 	</div>
 </section>
 
@@ -68,14 +83,14 @@
 </header>
 	<div class="fieldMenu">
 		<div class="menu">
-			<a href="AddActivity">	<i class="fas fa-running fa-3x"></i>
-				<h3>Moja aktywność</h3>
-				Sprawdź jakie aktywności są dostępne dzisiaj i dodaj aktywność do dziennika.
+			<a href="Calories">	<i class="fas fa-calculator fa-3x"></i>
+				<h3>Kalkulator spalonych kalorii</h3>
+				Zzadbaj o zdrowie - sprawdź ile kalorii spalisz podczas treningu!
 			</a>
 		</div>
 
 		<div class="menu">
-			<a href="MyAchievements">
+			<a href="AddActivity">
 				<i class="fas fa-clipboard fa-3x"></i>
 				<h3>Dziennik aktywności</h3>
 				Przeglądaj swoje osiąnięcia.</a>

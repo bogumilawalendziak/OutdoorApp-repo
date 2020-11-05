@@ -11,8 +11,9 @@
 </style>
 </head>
 <body>
+
 <section id="heading2">
-	<h3>Ustaw powiadomienie</h3>
+	<h3>Dodaj aktywność</h3>
 </section>
 
 <section>
@@ -25,41 +26,50 @@
 						<option>Jelenia Góra</option>
 					</select>
 				</form>
-				<h3> Obecnie w Gdańsku </h3>
+				<h3>Aktualna pogoda</h3>
 				<div id="icon" ></div>
 				<div id="day"></div>
 				<div id="date"></div>
 			</div>
+
 			<div class="weather2">
-				<div id="weatherTemp" ></div>
-				<div id="humidity" style="text-align: left"></div>
-				<div id="pressure" style="text-align: left"></div>
-				<div id="windspeed" style="text-align: left"></div>
+			<div id="weatherTemp" ></div>
+			<div id="humidity" style="text-align: left"></div>
+			<div id="pressure" style="text-align: left"></div>
+			<div id="windspeed" style="text-align: left"></div>
 			</div>
 		</div>
-
 		<div id="2" class="left2">
 			<fieldset class="addform">
-				<h3>Ustaw powiadomienie</h3>
-				Kiedy pogoda bedzie odpowidnia do wykonywania wybranej aktywnosci,
-				wyslemy do Ciebie powiadomienie e-mail.
-				<form class="padding" name="emailForm" action="#" method="post" th:action="@{/Notification}"  th:object="${notification}">
-					<div >Wybierz aktywność:</div>
-					<div><select class="formField" name="select" id="select" th:field="*{activityName}"></select></div>
-					<div >Podaj swoje imię:</div>
-					<div><input class="formField" type="text" name="user"  th:field="*{user}"/></div>
-					<div >Podaj adres e-mail:</div>
-					<div><input id="email" name="email" size="25" th:field="*{email}"/></div>
-					<div><button class="formField" type="submit" name="submit" >Wyślij</button></div>
-				</form></fieldset>
+				<h3>Oblicz kalorie</h3>
+				<form action="#" method="post" th:action="@{/Calories}"  th:object="${caloriesCalculator}">
+					<div>Wybierz aktywność:</div>
+					<div>
+					<select id="select" th:field="${caloriesCalculator.calories}">
+						<option th:each="calories : ${caloriesAll}" th:value="${calories.factor}" th:text="${calories.activity.activityName}">Wireframe</option>
+					</select>
+					</div>
+					<div>Podaj czas trwania aktywności w minutach:</div>
+				    <div><input class="formField" type="number" name="time" th:field="${caloriesCalculator.timeMin}" /></div>
+					<div>Podaj wagę w kilogramach:</div>
+					<div><input class="formField" type="number" name="weight"th:field="${caloriesCalculator.weight}" /></div>
+
+					<div><button class="formField" type="submit" name="submit" >Oblicz</button></div>
+				</form>
+
+				<div id="calories"> <p>Spalone kalorie:</p> <h3 th:value="${answer}" th:text="${answer}"></h3>
 			</div>
+
+			</fieldset>
+			</div>
+
 		<div id="3" class="right">
 			<fieldset >
-			<p> Niektóre sporty można uprawiać tylko przy śćliśle określonych warunkach pogodowych. Nie muisz jednak sprawdzać pogody codziennie - wyślemy powadomienie, gdy warunki pogodowe będą odpowiednie dla wybranej przez Ciebie dyscypliny. Wystarczy, ze wypełnisz formularz :)</p>
-			</fieldset>
-	</div></div>
+				<p> Tutaj możesz dodać informacje o twojej aktywności. W pierwszym kroku należy wybrać aktywność z rozwijanej listy, następnie podać swoje imię, wybrać datę - kiedy aktywnść miała miejsce i dodać opis. Warto zapisać takie informacje jak długość przebytej trasy, miejsce czy czas trwania treningu. Zapisane informacje pojawią się w dzienniku aktywności.  </p></fieldset>
+	</div>
 	</div>
 </section>
+
 <section><header>
 	<h2>Outdoor App</h2>
 </header>
@@ -84,7 +94,7 @@
 				Ustaw powiadomienie,gdy pogoda pozwoli na wykonywanie twojej aktywności.</a>
 		</div>
 		<div class="menu">
-			<a href="">
+			<a href="http://google.com">
 				<i class="fa fa-save fa-3x"></i>
 				<h3>Aktywności Outdoorowe</h3>
 				Przejżyj listę wszystkich proponowanych aktywności outdoorowych.</a>
@@ -103,6 +113,6 @@
 </section>
 <footer>
 </footer>
-<script src="/weather.js"></script>
+<script src="/calories.js"></script>
 </body>
 </html>

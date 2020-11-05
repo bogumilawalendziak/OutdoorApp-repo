@@ -35,7 +35,7 @@ public class AddActivityPageController {
         }
         myActivityService.save(current);
         model.addAttribute("myActivity", new MyActivity());
-        model.addAttribute("message","DODANO");
+        model.addAttribute("activities",myActivityService.readAll());
 
         return "AddActivity";
     }

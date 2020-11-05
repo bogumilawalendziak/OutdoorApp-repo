@@ -33,5 +33,8 @@ public interface ActivityRepository extends JpaRepository<Activity, Integer> {
 
     @Query(nativeQuery = true,value = "SELECT * FROM Activity")
     List<Activity> findByQuery3();
+
+    @Query(nativeQuery = true,value = "SELECT * FROM Activity WHERE activity_name=:activity")
+    Activity findByName(String activity);
 }
 
