@@ -6,10 +6,10 @@ import javax.persistence.*;
 public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
-    String user;
-    String email;
-    String activityName;
+    private int id;
+    private String user;
+    private String email;
+    private String activityName;
 
     public Notification(int id, String user, String email, String activityName) {
         this.id = id;

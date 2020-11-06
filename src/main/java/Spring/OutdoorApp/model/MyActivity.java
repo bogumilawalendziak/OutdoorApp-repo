@@ -9,13 +9,13 @@ public class MyActivity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
-    String user;
-    String activityName;
+    private int id;
+    private String user;
+    private String activityName;
     @NotBlank(message = "Description must be not empty")
-    public String description;
+    private String description;
     @NotBlank(message = "Data must be not empty")
-    public String data;
+    private String data;
 
     public MyActivity(int id, String activityName, String description , String user , String data) {
         this.id = id;

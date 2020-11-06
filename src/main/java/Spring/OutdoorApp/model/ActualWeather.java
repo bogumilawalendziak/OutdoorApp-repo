@@ -9,16 +9,16 @@ public class ActualWeather {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
-    LocalDate date;
-    String icon;
-    public double mainTemp;
-    public double windSpeed;
-    public double rain;
-    public double swell;
-    public double waterTemp;
-    public double windDeg;
-    public double sunset;
+    private int id;
+    private LocalDate date;
+    private String icon;
+    private double mainTemp;
+    private double windSpeed;
+    private double rain;
+    private double swell;
+    private double waterTemp;
+    private double windDeg;
+    private double sunset;
 
     public ActualWeather(LocalDate date , String icon , double mainTemp, double windSpeed, double windDeg, double rain, double swell, double waterTemp,int sunset) {
         this.icon = icon;

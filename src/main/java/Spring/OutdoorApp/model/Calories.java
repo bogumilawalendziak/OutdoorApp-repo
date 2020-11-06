@@ -7,13 +7,13 @@ import javax.persistence.*;
 @Table(name="calories")
 public class Calories {
     @Id
-    int id;
+    private int id;
 
     @OneToOne
     @JoinColumn(name="activity")
     @JsonManagedReference
-    Activity activity;
-    int factor;
+    private Activity activity;
+    private int factor;
 
     public Calories(int id, Activity activity, int factor) {
         this.id = id;

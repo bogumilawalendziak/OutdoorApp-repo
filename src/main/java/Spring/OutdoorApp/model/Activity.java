@@ -8,32 +8,32 @@ import javax.persistence.*;
 @Table(name = "Activity")
 public class Activity  {
 @Id
-    int id;
+    private int id;
     @Column(name = "ACTIVITY_NAME")
-    String activity_name;
+    private String activity_name;
 
     @Column(name = "windspeedmin")
-    double windSpeedmin;
+    private double windSpeedmin;
     @Column(name = "windspeedmax")
-    double windSpeedMax;
+    private double windSpeedMax;
     @Column(name = "winddegmin")
-    double windDegMin;
+    private double windDegMin;
     @Column(name = "winddegmax")
-    double windDegMax;
+    private double windDegMax;
 
-    double rain;
+    private double rain;
     @Column(name = "swellmin")
-    double swellMin;
+    private double swellMin;
     @Column(name = "swellmax")
-    double swellMax;
+    private double swellMax;
     @Column(name = "tempmin")
-    double minTemp;
+    private double minTemp;
     @Column(name = "tempmax")
-    double maxTemp;
+    private double maxTemp;
     @Column(name = "watermin")
-    double waterMin;
+    private double waterMin;
     @Column(name = "watermax")
-    double waterMax;
+    private double waterMax;
 
     @OneToOne (mappedBy="activity")
     @JsonBackReference
