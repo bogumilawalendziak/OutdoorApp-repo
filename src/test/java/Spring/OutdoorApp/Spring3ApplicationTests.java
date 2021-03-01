@@ -1,4 +1,4 @@
-package Spring.Superapp.OutdoorApp;
+package Spring.OutdoorApp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

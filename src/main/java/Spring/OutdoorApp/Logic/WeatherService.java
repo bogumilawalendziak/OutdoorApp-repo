@@ -5,7 +5,6 @@ import Spring.OutdoorApp.model.Activity;
 import Spring.OutdoorApp.model.ActivityRepository;
 import Spring.OutdoorApp.model.ActualWeather;
 import Spring.OutdoorApp.model.ActualWeatherRepository;
-import Spring.Superapp.OutdoorApp.WindyAPI.Windy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

@@ -1,8 +1,8 @@
 package Spring.OutdoorApp.OpenWeatherAPI;
 
 public class Rain {
-    double rain1h;
-    double rain3h;
+    private double rain1h;
+    private double rain3h;
 
     public double getRain1h() {
         return rain1h;

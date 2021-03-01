@@ -1,4 +1,4 @@
-package Spring.Superapp.OutdoorApp.WindyAPI;
+package Spring.OutdoorApp.Logic;
 import java.io.IOException;
 
 import org.jsoup.Connection;

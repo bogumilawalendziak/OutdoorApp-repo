@@ -1,9 +1,8 @@
 package Spring.OutdoorApp.Logic;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-
 import org.springframework.stereotype.Service;
+
+import java.text.DecimalFormat;
 
 @Service
 public class CaloriesCalculator {
@@ -21,11 +20,11 @@ public class CaloriesCalculator {
     public CaloriesCalculator() {
     }
 
-    public String caloriesCalculator(){
+    public String calculateCalories() {
+        if (weight <= 0 || timeMin <= 0) throw new IllegalStateException("Uzupełnij wszystkie pola");
 
-        float factor = (float)calories/(3600);
-
-       return  df.format(factor*weight*timeMin);
+        float factor = (float) calories / (3600);
+        return df.format(factor * weight * timeMin);
     }
 
 

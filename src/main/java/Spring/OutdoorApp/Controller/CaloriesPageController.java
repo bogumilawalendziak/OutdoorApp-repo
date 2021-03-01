@@ -34,7 +34,7 @@ public class CaloriesPageController {
     public String calculateCalories(@ModelAttribute("caloriesCalculator") CaloriesCalculator current, Model model) {
 
         model.addAttribute("caloriesCalculator", calc);
-        model.addAttribute("answer",current.caloriesCalculator());
+        model.addAttribute("answer",current.calculateCalories());
         model.addAttribute("caloriesAll", caloriesRepository.findAll());
 
         return "Calories";
