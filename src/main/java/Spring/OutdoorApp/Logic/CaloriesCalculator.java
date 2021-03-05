@@ -21,7 +21,9 @@ public class CaloriesCalculator {
     }
 
     public String calculateCalories() {
-        if (weight <= 0 || timeMin <= 0) throw new IllegalStateException("Uzupełnij wszystkie pola");
+        if (weight <= 0 || timeMin <= 0) {
+            throw new IllegalStateException("Uzupełnij wszystkie pola");
+        }
 
         float factor = (float) calories / (3600);
         return df.format(factor * weight * timeMin);

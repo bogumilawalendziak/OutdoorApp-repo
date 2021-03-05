@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class CaloriesCalculatorTest {
 
@@ -31,11 +33,15 @@ class CaloriesCalculatorTest {
     void calculateCalories_weight_and_timeMin_are_greater_than_zero() {
 
         //given
-        var caloriesCalculator = new CaloriesCalculator(100, 50, 20);
-
-
+        var mockCaloriesCalculator = mock(CaloriesCalculator.class);
+        //and
+        when(mockCaloriesCalculator.getCalories()).thenReturn(100);
+        //and
+        when(mockCaloriesCalculator.getTimeMin()).thenReturn(20);
+        //and
+        when(mockCaloriesCalculator.getWeight()).thenReturn(50);
         //sat
-        var toTest = caloriesCalculator.calculateCalories();
+        var toTest = mockCaloriesCalculator.calculateCalories();
         //when + then
         assertThat(toTest).isEqualTo("27,78");
     }
