@@ -16,6 +16,7 @@ class RequirementsServiceTest {
     void createCaloriesData_returns_list_of_calories_same_size_as_activity_list() {
         //given
         var mockActivityData = new ActivityData();
+        //and
         var activityList = mockActivityData.ActivityData();
         //and
         var mockActivityRepository = mock(ActivityRepository.class);

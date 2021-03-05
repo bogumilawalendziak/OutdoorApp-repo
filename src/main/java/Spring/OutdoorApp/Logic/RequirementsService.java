@@ -35,16 +35,14 @@ public class RequirementsService {
         Random random = new Random();
         List<Calories> calories = new ArrayList<>();
 
-        activities.stream().forEach(activity -> {
-
-            calories.add(new Calories(activity.getId(), activityRepository.findByName(activity.getActivityName())
-                    , random.nextInt(700) + 400));
-        });
+        activities.stream().map(activity -> calories.add(new Calories(activity.getId(),
+                activityRepository.findByName(activity.getActivityName())
+                 , random.nextInt(700) + 400)));
         return calories;
     }
 
     public void saveCalories(List<Calories> calories) {
-        calories.forEach(cal -> caloriesRepository.save(cal));
+        calories.forEach(caloriesRepository::save);
     }
 
 }

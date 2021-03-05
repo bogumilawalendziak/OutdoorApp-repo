@@ -3,11 +3,8 @@ package Spring.OutdoorApp.Logic;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.text.DecimalFormat;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-import static org.mockito.Mockito.mock;
 
 class CaloriesCalculatorTest {
 
@@ -34,18 +31,13 @@ class CaloriesCalculatorTest {
     void calculateCalories_weight_and_timeMin_are_greater_than_zero() {
 
         //given
-        var mockCaloriesCalculator = mock(CaloriesCalculator.class);
-        var timeMin = 20;
-        //and
-        var weight = 50;
-        //and
-        var calories = 100;
+        var caloriesCalculator = new CaloriesCalculator(100, 50, 20);
+
+
         //sat
-        var toTest = new CaloriesCalculator(timeMin, weight, calories);
-        //when
-        var factor = (float) calories / (3600);
-        var format = new DecimalFormat("0.00");
-        //then
-        assertThat(toTest.calculateCalories()).isEqualTo(format.format(factor * weight * timeMin));
+        var toTest = caloriesCalculator.calculateCalories();
+        //when + then
+        assertThat(toTest).isEqualTo("27,78");
     }
+
 }
