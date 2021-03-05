@@ -13,6 +13,7 @@ public class Windy {
     public Windy() throws IOException {
         Connection connect = Jsoup.connect("https://www.surf-forecast.com/breaks/Chalupy/forecasts/latest/six_day");
         Document document = connect.get();
+
         Elements allH1 = document.select("#forecast-table > div.forecast-table__content > table > tbody > tr:nth-child(5) > td:nth-child(1) > svg > text");
         String swellString = allH1.text();
         swell=Double.parseDouble(swellString);

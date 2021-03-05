@@ -16,7 +16,6 @@ class CaloriesCalculatorTest {
     void calculateCalories_weight_is_equal_zero() {
 
         //given
-        var mockCaloriesCalculator = mock(CaloriesCalculator.class);
         var timeMin = 20;
         //and
         var weight = 0;

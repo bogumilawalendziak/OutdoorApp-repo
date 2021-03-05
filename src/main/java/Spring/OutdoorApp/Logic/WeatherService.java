@@ -20,7 +20,6 @@ public class WeatherService {
     ActivityRepository activityRepository;
     ActualWeatherRepository repository;
     ActualWeather actualWeather;
-    List<Activity> activityList;
     String city;
 
     public WeatherService(ActualWeatherRepository repository, ActivityRepository activityRepository) throws IOException {
@@ -29,14 +28,17 @@ public class WeatherService {
         getOpenWeatherResponseResponseEntity();
 
     }
-    public ActualWeather getAllWeather(){
+
+    public ActualWeather getAllWeather() {
         return actualWeather;
     }
 
-    public List<Activity> getActivitiesAvailable()  {
-         activityList = activityRepository.findByQuery(actualWeather.getSwell(), actualWeather.getMainTemp(),actualWeather.getWindDeg(), actualWeather.getWindSpeed(),actualWeather.getMainTemp());
 
-         return activityList;
+    public List<Activity> getActivitiesAvailable() {
+        List<Activity> activityList = activityRepository.findByQuery(actualWeather.getSwell(), actualWeather.getMainTemp(),
+                actualWeather.getWindDeg(), actualWeather.getWindSpeed(), actualWeather.getMainTemp());
+
+        return activityList;
     }
 
 
@@ -47,10 +49,9 @@ public class WeatherService {
         city = "Gdansk";
         String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + ",pl&units=metric&appid=d9d5e7dd0725364f47a3dda5949d4151";
         ResponseEntity<OpenWeatherResponse> response = rt.getForEntity(url, OpenWeatherResponse.class);
-        actualWeather = new ActualWeather(LocalDate.now(),response.getBody().getWeather().get(0).getIcon(), response.getBody().getMain().getTemp(), response.getBody().getWind().getSpeed(), response.getBody().getWind().getDeg(), 0, windy.getSwell(), windy.getWaterTemp(),response.getBody().getSys().getSunset());
+        actualWeather = new ActualWeather(LocalDate.now(), response.getBody().getWeather().get(0).getIcon(), response.getBody().getMain().getTemp(), response.getBody().getWind().getSpeed(), response.getBody().getWind().getDeg(), 0, windy.getSwell(), windy.getWaterTemp(), response.getBody().getSys().getSunset());
         repository.save(actualWeather);
 
         return response;
     }
-
 }
